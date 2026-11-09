@@ -1,0 +1,32 @@
+
+services:
+  mysql:
+    profiles:
+      - dev
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-auction_lab}
+      MYSQL_USER: ${DB_USER:-auction}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-auction_dev}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_dev}
+    ports:
+      - "127.0.0.1:13306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  app:
+    profiles:
+      - prod
+    image: ${APP_IMAGE:-auction-lab:local}
+    environment:
+      SPRING_PROFILES_ACTIVE: ${APP_PROFILE:-prod}
+      DB_URL: ${DB_URL:-}
+      DB_USER: ${DB_USER:-}
+      DB_PASSWORD: ${DB_PASSWORD:-}
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

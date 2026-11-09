@@ -10,3 +10,11 @@
 7. Spring Web	REST API 개발을 위한 HTTP 요청 처리, Controller, Spring MVC 제공
 8. Testcontainers	Docker 컨테이너를 이용해 실제 MySQL 환경에서 통합 테스트 실행
 9. Validation	@NotNull, @NotBlank, @Min 등으로 요청 데이터의 유효성 검증
+
+<파일별 역할>
+.env.dev	개발 환경에서 사용할 변수와 값
+.env.prod	운영 환경에서 사용할 변수와 값
+compose.yaml	Docker 컨테이너 구성과 실행 방법
+application.yaml	Spring Boot 공통 설정
+application-dev.yaml	개발 환경 전용 Spring 설정
+application-prod.yaml	운영 환경 전용 Spring 설정

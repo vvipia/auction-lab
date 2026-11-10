@@ -20,7 +20,7 @@ services:
       - prod
     image: ${APP_IMAGE:-auction-lab:local}
     environment:
-      SPRING_PROFILES_ACTIVE: ${APP_PROFILE:-prod}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
       DB_URL: ${DB_URL:-}
       DB_USER: ${DB_USER:-}
       DB_PASSWORD: ${DB_PASSWORD:-}
